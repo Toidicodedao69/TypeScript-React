@@ -11,10 +11,10 @@ let userID: string | number;
 
 // Custom object type
 type User = {
-    name: string,
-    age: number,
-    isAuthed: boolean,
-    id: number | string
+    name: string;
+    age: number;
+    isAuthed: boolean;
+    id: number | string;
 };
 
 let user: User;
@@ -45,3 +45,54 @@ function calculate(a: number, b: number, calFn: SumFn) {
 
 calculate(6, 9, sum)
 
+// Another way to create object type
+interface Credentials {
+    password: string;
+    username: string;
+}
+
+// Extend interface by redeclaring the interface
+// Method called: "Declaration merging"
+interface Credentials {
+    mode: string;
+}
+
+let creds_example: Credentials;
+creds_example = {
+    password: 'abc',
+    username: '123',
+    mode: 'auto'
+}
+
+// Class can extend interface just like in .NET
+class Credential_Class implements Credentials {
+    password: string;
+    username: string;
+    mode: string;
+}
+
+// Merging types
+// type Admin = {
+//     permissions: string[]
+// }
+
+// type AppUser = {
+//     username: string[]
+// }
+
+// type AppAdmin = Admin & AppUser;
+
+interface Admin {
+    permissions: string[]
+}
+
+interface AppUser {
+    username: string
+}
+
+interface AppAdmin extends Admin, AppUser { };
+
+let admin: AppAdmin = {
+    permissions: ['abc'],
+    username: 'abc'
+}
