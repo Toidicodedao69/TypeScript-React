@@ -96,3 +96,41 @@ let admin: AppAdmin = {
     permissions: ['abc'],
     username: 'abc'
 }
+
+// Literal types
+type Role = 'admin' | 'user';
+let role: Role;
+
+role = 'admin'
+// role = 'abc'  This is invalid since role only accepts 'admin' and 'user'
+
+function typeGuard(action: string | number, role: Role): void {
+    if (role === 'admin' && typeof action === 'string') {
+        action = 'do something';
+    }
+}
+
+// Create custom generic types
+type DataStorage<T> = {
+    storage: T[];
+    add: (input: T) => void
+}
+
+let TextStorage: DataStorage<string>;
+let UserStorage: DataStorage<User>;
+
+UserStorage = {
+    storage: [],
+    add(input: User) {
+        this.storage.push(input);
+    }
+};
+
+function Merge<T, U>(a: T, b: U) {
+    return {
+        ...a,
+        ...b,
+    }
+}
+
+const merge_example = Merge<{ name: string }, { age: number }>({ name: 'abc' }, { age: 99 });
