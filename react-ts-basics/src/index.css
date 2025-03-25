@@ -31,7 +31,7 @@ body {
 }
 
 h1 {
-  font-size: 3.2em;
+  font-size: 3em;
   line-height: 1.1;
 }
 
@@ -65,4 +65,19 @@ button:focus-visible {
   button {
     background-color: #f9f9f9;
   }
+}
+
+main {
+  background-color: darkcyan;
+  padding: 10%;
+}
+
+article {
+  background-color: gray;
+  padding: 2%;
+  margin-top: 10%;
+}
+
+ul {
+  list-style-type: none;
 }
